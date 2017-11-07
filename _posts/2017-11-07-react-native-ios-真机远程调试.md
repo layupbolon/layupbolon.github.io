@@ -1,6 +1,6 @@
 ---
 layout:     post                    # 使用的布局（不需要改）
-title:      react-native ios 真机远程调试              # 标题 
+title:      React-Native ios 真机远程调试              # 标题 
 subtitle:    #副标题
 date:       2017-11-07              # 时间
 author:     Eric                      # 作者
