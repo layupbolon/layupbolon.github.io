@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      React-Native ios 真机远程调试
+title: 真机远程调试
 subtitle:
 date:       2017-11-07
 author:     Eric
