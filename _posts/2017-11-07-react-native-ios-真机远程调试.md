@@ -1,7 +1,6 @@
 ---
 layout:     post
 title:      react-native ios 真机远程调试
-subtitle:   react-native ios 真机调试黑科技🙃
 date:       2017-11-07
 author:     Eric
 header-img: img/post-bg-2015.jpg
