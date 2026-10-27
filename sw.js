@@ -6,7 +6,7 @@
  * Register service worker.
  * ========================================================== */
 
-const PRECACHE = 'precache-v1';
+const PRECACHE = 'precache-v2-neon';
 const RUNTIME = 'runtime';
 const HOSTNAME_WHITELIST = [
   self.location.hostname,
@@ -106,6 +106,20 @@ self.addEventListener('activate',  event => {
  *  void respondWith(Promise<Response> r);
  */
 self.addEventListener('fetch', event => {
+  // Neon Drift Web builds: never stale-while-revalidate (Godot pck/wasm must be fresh)
+  try {
+    const u = new URL(event.request.url);
+    if (u.hostname === self.location.hostname && (
+        u.pathname.startsWith('/neon-drift/') ||
+        u.pathname === '/neon-drift' ||
+        u.pathname.startsWith('/neon-drift-v3/') ||
+        u.pathname === '/neon-drift-v3'
+      )) {
+      event.respondWith(fetch(event.request, { cache: 'no-store' }));
+      return;
+    }
+  } catch (e) {}
+
   // logs for debugging
   console.log(`fetch ${event.request.url}`)
   //console.log(` - type: ${event.request.type}; destination: ${event.request.destination}`)
